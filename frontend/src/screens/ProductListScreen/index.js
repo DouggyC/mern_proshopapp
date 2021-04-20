@@ -10,12 +10,10 @@ import { PRODUCT_CREATE_RESET } from '../../constants/productConstants';
 
 const ProductListScreen = ({ history, match }) => {
     const pageNumber = match?.params.pageNumber || 1;
-    console.log('🚀 ~ file: index.js ~ line 13 ~ ProductListScreen ~ pageNumber', pageNumber);
     const dispatch = useDispatch();
 
     const productList = useSelector((state) => state.productList);
     const { loading, error, products, page, pages } = productList;
-    console.log('🚀 ~ file: index.js ~ line 18 ~ ProductListScreen ~ productList', productList);
 
     const productDelete = useSelector((state) => state.productDelete);
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete;

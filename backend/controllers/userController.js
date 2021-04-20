@@ -138,11 +138,6 @@ const updateUser = asyncHandler(async (req, res) => {
     user.email = req.body.email || user.email;
     user.isAdmin = req.body.isAdmin ?? user.isAdmin;
 
-    console.log(
-      "🚀 ~ file: userController.js ~ line 137 ~ updateUser ~ user",
-      user
-    );
-
     const updatedUser = await user.save();
 
     res.json({

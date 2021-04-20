@@ -7,8 +7,6 @@ const SearchBox = ({ history }) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        console.log('submit');
-
         if (keyword.trim()) {
             history.push(`/search/${keyword}`);
         } else {
