@@ -1,0 +1,7 @@
+{
+  "files.autoSave": "onFocusChange",
+  "emmet.excludeLanguages": ["markdown"],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
