@@ -7,7 +7,7 @@ import Message from '../../components/Message';
 import Meta from '../../components/Meta';
 import Loader from '../../components/Loader';
 import { listProductDetails, createProductReview } from '../../actions/productActions';
-// import { addToCart } from "../../actions/cartActions";
+import { addToCart } from '../../actions/cartActions';
 import { PRODUCT_CREATE_RESET } from '../../constants/productConstants';
 
 const ProductScreen = ({ history, match }) => {
@@ -36,8 +36,9 @@ const ProductScreen = ({ history, match }) => {
         dispatch(listProductDetails(match.params.id));
     }, [dispatch, match, successProductReview]);
 
-    const addToCartHandler = (id, qty) => {
-        history.replace(`/cart/${id}?qty=${qty}`);
+    const addToCartHandler = () => {
+        dispatch(addToCart(product._id, qty));
+        history.push(`/cart`);
     };
 
     const submitHandler = (e) => {
@@ -100,7 +101,7 @@ const ProductScreen = ({ history, match }) => {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>Qty</Col>
-                                                <Col>
+                                                <div>
                                                     <Form.Control
                                                         as="select"
                                                         value={qty}
@@ -112,14 +113,14 @@ const ProductScreen = ({ history, match }) => {
                                                             </option>
                                                         ))}
                                                     </Form.Control>
-                                                </Col>
+                                                </div>
                                             </Row>
                                         </ListGroup.Item>
                                     )}
 
                                     <ListGroup.Item>
                                         <Button
-                                            onClick={(e) => addToCartHandler(match.params.id, qty)}
+                                            onClick={(e) => addToCartHandler()}
                                             className="btn-block"
                                             type="button"
                                             disabled={product.countInStock === 0}
